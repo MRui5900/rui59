@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけんゲーム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: red
+            
+
+        }
+        #wrappar{
+            display: flex;
+
+        }
+        
+       
+    
+
+        .result {
+            font-size: 30px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>じゃんけんデスゲーム</h1>
+    <p>Dead or Alive</p>
+    <p> 選択してください：</p>
+    <button class="btn" onclick="play('rock')">グー</button>
+    <button class="btn" onclick="play('paper')">パー</button>
+    <button class="btn" onclick="play('scissors')">チョキ</button>
+
+    <img id="computerChoiceImg" width="" src="">
+    <div class="result" id="result"></div>
+    
+    <div class="video-container"></div>
+    <div id ="wrappar">
+            
+    
+
+    
+    <video class="v1" src ="./baio2.mp4" width="300" height="360"   style="float:right; margin-right:10px;">
+      
+     
+        
+    </video>
+    <video class="v2" src ="./baio.mp4" width="300" height="360"   style="float:left ; margin-right:10px;">
+        
+        
+     
+     
+    </video>
+   </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        function play(userChoice) {
+            const choices = ["rock", "paper", "scissors"];
+            const randomIndex = Math.floor(Math.random() * 3);
+            const computerChoice = choices[randomIndex];
+            let resultText = "";
+            let videoId = "";
+            if (userChoice === computerChoice) {
+                resultText = "Draw！";
+            } else if (
+                (userChoice === "rock" && computerChoice === "scissors") ||
+                (userChoice === "paper" && computerChoice === "rock") ||
+                (userChoice === "scissors" && computerChoice === "paper")
+            ) {
+                resultText = "Alive！";
+                videoId ="Winvideo";
+                  
+                
+        
+            } else {
+                resultText = "Dead！";
+            }
+            document.getElementById("result").innerText = resultText;
+            document.getElementsById(videoId).style.display = "block";
+        }
+        var video = document.getElementsByClassName("v");
+            let v1 = $(".v1");
+            
+
+            $(function () {
+                //video要素の取得
+                let videoPlayStatus = video.ended;
+                console.log(videoPlayStatus);
+
+                // 自動再生する
+                video.autoplay = true;
+
+                // true：無音で再生 / false：音ありで再生
+                video.muted = true;
+
+                // 繰り返し再生する
+                // video.loop = true;
+
+                // 再生位置を指定する（秒）
+                video.currentTime = 0;
+            });
+            $(".btn").on("click", function () {
+                console.log(video.ended);
+                console.log(1111);
+                $(".v1").currentTime = 0;
+                $(".v1").get(0).paused;
+                $(".v1").get(0).muted = false;
+                $(".v1").get(0).play();
+            });
+            var video = document.getElementsByClassName("v");
+            
+            let v2 = $(".v2");
+
+            $(function () {
+                //video要素の取得
+                let videoPlayStatus = video.ended;
+                console.log(videoPlayStatus);
+
+                // 自動再生する
+                video.autoplay = true;
+
+                // true：無音で再生 / false：音ありで再生
+                video.muted = true;
+
+                // 繰り返し再生する
+                // video.loop = true;
+
+                // 再生位置を指定する（秒）
+                video.currentTime = 0;
+            });
+            $(".btn").on("click", function () {
+                console.log(video.ended);
+                console.log(1111);
+                $(".v2").currentTime = 0;
+                $(".v2").get(0).paused;
+                $(".v2").get(0).muted = false;
+                $(".v2").get(0).play();
+            });
+    </script>
+ 
+
+
+
+</body>
+
+</html>

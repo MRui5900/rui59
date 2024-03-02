@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <video id="video1" src="./baio2.mp4" style="width: 400px"></video>
+        <button id="btn">ボタン</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script>
+            var video = document.getElementById("video1");
+            let v = $("#video1");
+
+            $(function () {
+                //video要素の取得
+                let videoPlayStatus = video.ended;
+                console.log(videoPlayStatus);
+
+                // 自動再生する
+                video.autoplay = true;
+
+                // true：無音で再生 / false：音ありで再生
+                video.muted = true;
+
+                // 繰り返し再生する
+                // video.loop = true;
+
+                // 再生位置を指定する（秒）
+                video.currentTime = 0;
+            });
+            $("#btn").on("click", function () {
+                console.log(video.ended);
+                console.log(1111);
+                $("#video1").currentTime = 0;
+                $("#video1").get(0).paused;
+                $("#video1").get(0).muted = false;
+                $("#video1").get(0).play();
+            });
+        </script>
+    </body>
+</html>
